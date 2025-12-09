@@ -45,6 +45,9 @@ Route::middleware('auth')->group(function () {
         // ADMIN: activate/deactivate users
         Route::get('/admin/user-status', [AdminUserStatusController::class, 'index'])->name('admin.user_status.index');
         Route::post('/admin/user-status/{user}/toggle', [AdminUserStatusController::class, 'toggle'])->name('admin.user_status.toggle');
+        Route::get('/admin/user-status/create', [AdminUserStatusController::class, 'create'])->name('admin.user_status.create');
+        Route::post('/admin/user-status', [AdminUserStatusController::class, 'store'])->name('admin.user_status.store');
+
     });
 });
 
