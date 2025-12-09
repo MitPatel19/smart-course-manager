@@ -18,7 +18,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role',      // IMPORTANT: role added here
+        'role',
+        'is_active', // NEW
     ];
 
     /**
@@ -41,13 +42,11 @@ class User extends Authenticatable
     //   RELATIONSHIPS
     // ==========================
 
-    // One instructor teaches many courses
     public function coursesTeaching()
     {
         return $this->hasMany(Course::class, 'instructor_id');
     }
 
-    // A student is enrolled in many courses (many-to-many via enrollments)
     public function coursesEnrolled()
     {
         return $this->belongsToMany(Course::class, 'enrollments', 'student_id', 'course_id');
